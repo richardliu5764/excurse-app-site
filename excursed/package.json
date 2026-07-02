@@ -1,0 +1,24 @@
+{
+  "name": "excursed",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Excurse pipeline monorepo — interview instrument, traveler/trip graph, research agenda, composer, verifier. One spine, five organs.",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "for p in schema graph interview agenda compose verify cli; do npx tsc -p packages/$p --noEmit || exit 1; done",
+    "excursed": "tsx packages/cli/src/main.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "zod": "^3.24.0"
+  }
+}
